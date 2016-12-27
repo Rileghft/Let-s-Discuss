@@ -1,20 +1,27 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
-
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Java")
-
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Let's Discuss</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <a href="">首頁</a>
+            <a href="">所有討論</a>
+            <a href="">帳戶</a>
+        </nav>
+        <div class="container">
+            <div id="chat" class="column">
+                <span>chat</span>
+            </div>
+            <div id="memo" class="column">
+                <span>memo</span>
+            </div>
+            <div id="doc" class="column">
+                <span>doc</span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+nav {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.column {
+    display: inline-block;
+    position: relative;
+    width: 33.1%;
+    height: 100%;
+}
+
+#chat {
+    background-color: blue;
+}
+
+#memo {
+    background-color: grey;
+}
+
+#doc {
+    background-color: yellow;
+}
