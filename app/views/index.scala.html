@@ -7,13 +7,16 @@
         <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
         <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
 
+            <!-- all bootstrap need jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
             <!-- Main Quill library -->
-        <script src="https://cdn.quilljs.com/1.1.8/quill.js"></script>
-        <script src="https://cdn.quilljs.com/1.1.8/quill.min.js"></script>
+        <script src="https://cdn.quilljs.com/latest/quill.js"></script>
+        <script src="https://cdn.quilljs.com/latest/quill.min.js"></script>
 
             <!-- Theme included stylesheets -->
-        <link href="https://cdn.quilljs.com/1.1.8/quill.snow.css" rel="stylesheet">
-        <link href="https://cdn.quilljs.com/1.1.8/quill.bubble.css" rel="stylesheet">
+        <link href="https://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
+        <link href="https://cdn.quilljs.com/latest/quill.bubble.css" rel="stylesheet">
 
     </head>
     <body>
@@ -36,6 +39,9 @@
                 <span>memo</span>
             </div>
             <div id="doc" class="column">
+                <button id="save_delta">Save delta</button>
+                <button id="load_delta">Load delta</button>
+                <button id="on_off_btn">開關</button>
                 <div id="editor"></div>
             </div>
         </div>
