@@ -1,31 +1,56 @@
+html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
 nav {
     display: block;
     position: relative;
     width: 100%;
-    height: 10%;
+    height: 3%;
 }
 
 .container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 97%;
 }
 
 .column {
-    display: inline-block;
+    box-sizing: border-box;
     position: relative;
-    width: 33.1%;
     height: 100%;
+    float: left;
 }
 
 #chat {
-    background-color: blue;
+    width: 25%;
+    border-top: solid lightgrey 1px;
+    border-right: solid lightgrey 1px;
 }
 
 #memo {
-    background-color: grey;
+    width: 25%;
+    border-top: solid lightgrey 1px;
+    border-right: solid lightgrey 1px;
 }
 
 #doc {
-    background-color: yellow;
+    width: 50%;
+    border-top: solid lightgrey 1px;
+}
+
+.msg-box {
+    float: clear;
+    width: 100%;
+    height: 90%;
+}
+
+.msg-input {
+    float: clear;
+    width: 100%;
+    height: 10%;
+    vertical-align: bottom;
+    background-color: blue;
 }
