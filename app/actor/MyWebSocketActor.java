@@ -1,6 +1,9 @@
 package actor;
 
 import akka.actor.*;
+
+//for print
+
 /**
  * Created by fnsne on 2017/1/2.
  */
@@ -18,6 +21,7 @@ public class MyWebSocketActor extends UntypedActor{
     public void onReceive( Object message ){
         if (message instanceof String){
             out.tell("I received your message:" + message, self());
+            System.out.println("Received message : "+message);
         }
     }
 }
