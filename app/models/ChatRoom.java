@@ -19,7 +19,7 @@ public class ChatRoom {
 
     public static void notifyAll( Object message ){
         for(int i = 0 ; i < actors.size(); i++){
-            actors.get(i).tell("someone said : " + message ,ActorRef.noSender());
+            actors.get(i).tell( message ,ActorRef.noSender());
         }
     }
 }
