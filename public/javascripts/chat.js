@@ -2,8 +2,10 @@
  * Created by fnsne on 2017/1/2.
  */
 var socket;
+var hostUrl = window.location.host;
 document.addEventListener('DOMContentLoaded', function(){
-    socket = new WebSocket("ws://localhost:9000/ws");
+
+    socket = new WebSocket(`ws://${hostUrl}/ws`);
 
     $('#chat_submit').click(function () {
         var $input_area = $('#chat_input_text');
