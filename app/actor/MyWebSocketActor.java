@@ -1,6 +1,9 @@
 package actor;
 
+import models.ChatRoom;
+
 import akka.actor.*;
+import java.util.*;
 
 //for print
 
@@ -14,14 +17,21 @@ public class MyWebSocketActor extends UntypedActor{
 
     private final ActorRef out;
 
+
     public MyWebSocketActor(ActorRef out){
         this.out = out;
+        ChatRoom.join("A: ", out);
     }
 
     public void onReceive( Object message ){
         if (message instanceof String){
             out.tell("I received your message:" + message, self());
             System.out.println("Received message : "+message);
+            notifyAll(message);
         }
+    }
+
+    public void notifyAll(Object message){
+        ChatRoom.notifyAll(message);
     }
 }
