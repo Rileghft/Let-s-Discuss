@@ -35,5 +35,4 @@ function append_message_2_chat( response ) {
     var temp = $msg_box.prop("innerText");
     let resp = JSON.parse(response);
     $msg_box.prop( "innerText", temp+"\n"+resp.user+" : " + resp.msg );
-
 }
