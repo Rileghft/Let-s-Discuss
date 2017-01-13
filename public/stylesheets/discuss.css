@@ -54,17 +54,19 @@ nav {
 .other{
     float:left;
     margin-left: 5px;
+    margin-top: 10px;
 }
 
 .me{
     float:right;
     margin-right: 5px;
+    margin-top: 10px;
 }
 
 .msg_buble{
     width:100%;
     margin-top:10px;
-    height:50px;
+    clear: both;
 }
 
 .my_msg{
