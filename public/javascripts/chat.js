@@ -31,8 +31,11 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function append_message_2_chat( response ) {
-    var $msg_box = $('.msg-box');
-    var temp = $msg_box.prop("innerText");
+    var $msg_box = $('#chat_body');
     let resp = JSON.parse(response);
-    $msg_box.prop( "innerText", temp+"\n"+resp.user+" : " + resp.msg );
+    if(resp.user == username) {
+        $msg_box.append("<div class='msg_buble'><div class='me'><div class='my_msg msg'> " + resp.msg + "</div></div></div>");
+    }else{
+        $msg_box.append("<div class='msg_buble'><div class='other'> <div class='other_name'>" + resp.user + "</div><div class='other_msg msg'> " + resp.msg + "</div></div></div>");
+    }
 }

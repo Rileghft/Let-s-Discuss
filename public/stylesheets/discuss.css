@@ -41,16 +41,50 @@ nav {
     border-top: solid lightgrey 1px;
 }
 
-.msg-box {
-    float: clear;
-    width: 100%;
-    height: 90%;
+#chat_input_text{
+    width:100%;
+    height:100px;
+    -ms-word-break:;
+    word-break:break-all;
+}
+#chat_body{
+    height: 400px;
+    overflow: scroll;
+}
+.other{
+    float:left;
+    margin-left: 5px;
 }
 
-.msg-input {
-    float: clear;
-    width: 100%;
-    height: 10%;
-    vertical-align: bottom;
-    background-color: blue;
+.me{
+    float:right;
+    margin-right: 5px;
+}
+
+.msg_buble{
+    width:100%;
+    margin-top:10px;
+    height:50px;
+}
+
+.my_msg{
+    background-color: aqua;
+}
+
+.msg{
+    word-break: break-all;
+    border-radius: 10px;
+    padding: 5px 8px 4px ;
+}
+
+.other_msg{
+    background-color: lightgray;
+}
+
+.other_name{
+    color: lightgray;
+}
+
+#chat_title{
+    background-color: rgba(0, 0, 255, 0.64);
 }
