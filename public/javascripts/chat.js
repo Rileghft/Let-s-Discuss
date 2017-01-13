@@ -9,6 +9,7 @@ var chat_packet = {
 };
 
 var username = prompt("請輸入名字", "預設使用者");
+var preUsername = "";
 if(username != null){
     chat_packet.user = username;
 }
@@ -35,7 +36,13 @@ function append_message_2_chat( response ) {
     let resp = JSON.parse(response);
     if(resp.user == username) {
         $msg_box.append("<div class='msg_buble'><div class='me msg_container'><span class='my_msg msg'> " + resp.msg + "</span></div></div>");
-    }else{
-        $msg_box.append("<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+    }else {
+        if (preUsername == resp.user) {
+            $msg_box.append("<div class='msg_buble'><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+            preUsername = resp.user;
+        } else {
+            $msg_box.append("<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+            preUsername = resp.user;
+        }
     }
 }
