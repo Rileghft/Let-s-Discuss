@@ -34,8 +34,8 @@ function append_message_2_chat( response ) {
     var $msg_box = $('#chat_body');
     let resp = JSON.parse(response);
     if(resp.user == username) {
-        $msg_box.append("<div class='msg_buble'><div class='me'><span class='my_msg msg'> " + resp.msg + "</span></div></div>");
+        $msg_box.append("<div class='msg_buble'><div class='me msg_container'><span class='my_msg msg'> " + resp.msg + "</span></div></div>");
     }else{
-        $msg_box.append("<div class='msg_buble'><div class='other'> <div class='other_name'>" + resp.user + "</div><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+        $msg_box.append("<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
     }
 }

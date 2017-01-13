@@ -53,14 +53,19 @@ nav {
 }
 .other{
     float:left;
-    margin-left: 5px;
-    margin-top: 10px;
+    background-color: lightgray;
 }
 
 .me{
     float:right;
+    background-color: aqua;
+}
+
+.msg_container{
     margin-right: 5px;
     margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px 8px 4px ;
 }
 
 .msg_buble{
@@ -70,18 +75,11 @@ nav {
 }
 
 .my_msg{
-    background-color: aqua;
 }
 
 .msg{
     word-break: break-all;
-    border-radius: 10px;
-    padding: 5px 8px 4px ;
     white-space: pre;
-}
-
-.other_msg{
-    background-color: lightgray;
 }
 
 .other_name{
