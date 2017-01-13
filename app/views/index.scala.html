@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
-        <link href="@routes.Assets.versioned("stylesheets/msgbubble.css")" rel="stylesheet" type="text/css">
         <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
         <script src="@routes.Assets.versioned("javascripts/chat.js")"></script>
 
@@ -29,44 +28,27 @@
             <a href="">所有討論</a>
             <a href="">帳戶</a>
         </nav>
-		<div id="chat" class="column">
-		
-			<div class="panel panel-primary">
-				<div class="panel-heading">				
-						<h3 class="panel-title"></h3>
-						<span>Chat Box</span>	
-					<div class="msg-box">
-					
-					    <div class="bubbleItem clearfix">   <span style="font-family: Arial, Helvetica, sans-serif;"><!--右侧的泡泡--></span>  
-							<span class="bubble rightBubble">  
-									聊天窗哟！ 
-								<span class="bottomLevel"></span>  
-								<span class="topLevel"></span>  
-							</span>  
-						</div> 
-						
-						
-					</div>
-				</div>
-				<hr/>
-				<input type="text" class="form-control" placeholder="msg" aria-describedby="sizing-addon1" id="chat_input_text">
-				<hr/>
-				
-				<hr/>
-				<button type="button" class="btn btn-lg btn-success btn-block"id="chat_submit">送出</button>
-			</div>	
-		
-		</div>	
-            <div id="memo" class="column">
-                <span>memo</span>
+        <div id="chat" class="column">
+            <div id="chat_title">
+                Chat Room 1
             </div>
-			
-            <div id="doc" class="column">
-                <button id="save_delta">Save delta</button>
-                <button id="load_delta">Load delta</button>
-                <button id="on_off_btn">開關</button>
-                <div id="editor"></div>
+            <div id="chat_body">
             </div>
+            <div id="chat_input_container">
+                <textarea  placeholder="message" id="chat_input_text"></textarea>
+                <button id="chat_submit">送出</button>
+            </div>
+        </div>
+
+        <div id="memo" class="column">
+            <span>memo</span>
+        </div>
+
+        <div id="doc" class="column">
+            <button id="save_delta">Save delta</button>
+            <button id="load_delta">Load delta</button>
+            <button id="on_off_btn">開關</button>
+            <div id="editor"></div>
         </div>
     </body>
 </html>
