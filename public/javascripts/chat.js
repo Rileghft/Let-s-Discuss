@@ -34,15 +34,17 @@ document.addEventListener('DOMContentLoaded', function(){
 function append_message_2_chat( response ) {
     var $msg_box = $('#chat_body');
     let resp = JSON.parse(response);
+    let append_element = "";
     if(resp.user == username) {
-        $msg_box.append("<div class='msg_buble'><div class='me msg_container'><span class='my_msg msg'> " + resp.msg + "</span></div></div>");
+        append_element = "<div class='msg_buble'><div class='me msg_container' draggable='true' ondragstart='drag(event)'><span class='my_msg msg'> " + resp.msg + "</span></div></div>";
     }else {
         if (preUsername == resp.user) {
-            $msg_box.append("<div class='msg_buble'><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+            append_element = "<div class='msg_buble'><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
             preUsername = resp.user;
         } else {
-            $msg_box.append("<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container'><span class='other_msg msg'> " + resp.msg + "</span></div></div>");
+            append_element = "<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
             preUsername = resp.user;
         }
     }
+    $msg_box.append(append_element);
 }
