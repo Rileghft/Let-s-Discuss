@@ -89,3 +89,8 @@ nav {
 #chat_title{
     background-color: rgba(0, 0, 255, 0.64);
 }
+
+#memo_container{
+    height:90%;
+    overflow: scroll;
+}

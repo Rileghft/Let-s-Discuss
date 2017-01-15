@@ -48,3 +48,13 @@ function append_message_2_chat( response ) {
     }
     $msg_box.append(append_element);
 }
+/*
+        <div class='msg_buble'>
+            <div class='me msg_container'>
+                <span class='my_msg msg>
+                    訊息
+                </span>
+            </div>
+        </div>
+
+ */
