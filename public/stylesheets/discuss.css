@@ -82,7 +82,7 @@ nav {
     white-space: pre;
 }
 
-.other_name{
+.usr_name{
     color: lightgray;
 }
 
@@ -93,4 +93,8 @@ nav {
 #memo_container{
     height:90%;
     overflow: scroll;
+}
+
+.hidden{
+    display: none;
 }

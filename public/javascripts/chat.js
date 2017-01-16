@@ -36,20 +36,21 @@ function append_message_2_chat( response ) {
     let resp = JSON.parse(response);
     let append_element = "";
     if(resp.user == username) {
-        append_element = "<div class='msg_buble'><div class='me msg_container' draggable='true' ondragstart='drag(event)'><span class='my_msg msg'> " + resp.msg + "</span></div></div>";
+        append_element = "<div class='msg_buble'><div class='usr_name hidden'>" + resp.user + "</div><div class='me msg_container' draggable='true' ondragstart='drag(event)'><span class='my_msg msg'> " + resp.msg + "</span></div></div>";
     }else {
         if (preUsername == resp.user) {
-            append_element = "<div class='msg_buble'><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
-            preUsername = resp.user;
+            append_element = "<div class='msg_buble'><div class='usr_name hidden'>" + resp.user + "</div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
         } else {
-            append_element = "<div class='msg_buble'><div class='other_name'>" + resp.user + "</div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
-            preUsername = resp.user;
+            append_element = "<div class='msg_buble'><div class='usr_name'>" + resp.user + "</div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
         }
     }
+    preUsername = resp.user;
     $msg_box.append(append_element);
 }
 /*
         <div class='msg_buble'>
+            <div class='user_name'>
+            </div>
             <div class='me msg_container'>
                 <span class='my_msg msg>
                     訊息
