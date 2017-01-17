@@ -13,7 +13,7 @@ function allowDrop(event) {
 function drag(event) {
     let msg=  event.currentTarget.innerText;
     let parent = event.currentTarget.parentNode;
-    let name = parent.childNodes[0].innerText;
+    let name = parent.childNodes[0].childNodes[0].innerText;
     let data = {
         'user':name,
         'msg' : msg
@@ -51,7 +51,28 @@ function drop(event) {
     var att_msg_buble_class = document.createAttribute('class');
     att_msg_buble_class.value = 'msg_buble';
     msg_buble.setAttributeNode(att_msg_buble_class);
-    msg_buble.appendChild(user_name);
+
+    //close button
+    var close_button = document.createElement('div');
+    var attr_close_button_class = document.createAttribute('class');
+    attr_close_button_class.value = 'close_button';
+    close_button.setAttributeNode(attr_close_button_class);
+    close_button.innerText = '❌';
+    close_button.addEventListener('click', function (event) {
+        let _this = event.currentTarget;
+        let msg_buble =  _this.parentNode.parentNode;
+        msg_buble.parentNode.removeChild(msg_buble);
+    });
+
+    //userName and close row
+    var username_row = document.createElement('div');
+    var attr_username_row_class = document.createAttribute('class');
+    attr_username_row_class.value = 'user_name_row';
+    username_row.setAttributeNode(attr_username_row_class);
+    username_row.appendChild(user_name);
+    username_row.appendChild(close_button);
+
+    msg_buble.appendChild(username_row);
     msg_buble.appendChild(msg_container);
 
     event.currentTarget.appendChild(msg_buble);
