@@ -21,9 +21,16 @@ document.addEventListener('DOMContentLoaded', function(){
     $('#chat_submit').click(function () {
         var $input_area = $('#chat_input_text');
         var input_text = $input_area.val();
+        if(input_text == "")
+        {
+            return false;
+        }
+        else
+        {
         chat_packet.msg = input_text;
         socket.send(JSON.stringify(chat_packet));
         $input_area.prop("value", "");
+          }
     });
 
     socket.onmessage = function (event) {
@@ -35,13 +42,19 @@ function append_message_2_chat( response ) {
     var $msg_box = $('#chat_body');
     let resp = JSON.parse(response);
     let append_element = "";
-    if(resp.user == username) {
-        append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name hidden'>" + resp.user + "</div></div><div class='me msg_container' draggable='true' ondragstart='drag(event)'><span class='my_msg msg'> " + resp.msg + "</span></div></div>";
-    }else {
-        if (preUsername == resp.user) {
-            append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name hidden'>" + resp.user + "</div></div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
+    if(resp.msg == "")
+    {
+        return false;
+    }
+    else {
+        if (resp.user == username) {
+            append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name hidden'>" + resp.user + "</div></div><div class='me msg_container' draggable='true' ondragstart='drag(event)'><span class='my_msg msg'> " + resp.msg + "</span></div></div>";
         } else {
-            append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name'>" + resp.user + "</div></div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
+            if (preUsername == resp.user) {
+                append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name hidden'>" + resp.user + "</div></div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
+            } else {
+                append_element = "<div class='msg_buble'><div class='user_name_row'><div class='usr_name'>" + resp.user + "</div></div><div class='other msg_container' draggable='true' ondragstart='drag(event)'><span class='other_msg msg'> " + resp.msg + "</span></div></div>";
+            }
         }
     }
     preUsername = resp.user;
