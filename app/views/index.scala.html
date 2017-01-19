@@ -19,8 +19,7 @@
             <!-- Theme included stylesheets -->
         <link href="https://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
         <link href="https://cdn.quilljs.com/latest/quill.bubble.css" rel="stylesheet">
-		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">	
-		
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     </head>
     <body>
@@ -36,7 +35,7 @@
             <div id="chat_body">
             </div>
             <div id="chat_input_container">
-                <textarea  placeholder="message" id="chat_input_text"></textarea>
+                <textarea  placeholder="message" id="chat_input_text" onkeydown="return noNumbers(event)" ></textarea>
                 <button id="chat_submit">送出</button>
             </div>
         </div>
