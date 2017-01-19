@@ -14,24 +14,46 @@ if(username != null){
     chat_packet.user = username;
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function(){
 
     socket = new WebSocket(`ws://${hostUrl}/ws`);
+        $('#chat_submit').click(function () {
+            var $input_area = $('#chat_input_text');
+            var input_text = $input_area.val();
+            if (input_text == "") {
+                return false;
+            }
+            else {
+                chat_packet.msg = input_text;
+                socket.send(JSON.stringify(chat_packet));
+                $input_area.prop("value", "");
+            }
+        });
 
-    $('#chat_submit').click(function () {
-        var $input_area = $('#chat_input_text');
-        var input_text = $input_area.val();
-        if(input_text == "")
-        {
-            return false;
-        }
-        else
-        {
-        chat_packet.msg = input_text;
-        socket.send(JSON.stringify(chat_packet));
-        $input_area.prop("value", "");
-          }
-    });
+        document.getElementById('chat_input_text').addEventListener('keydown',function(e){
+            var $input_area = $('#chat_input_text');
+            var input_text = $input_area.val();
+            if( e.shiftKey && e.keyCode==13)
+            {
+               return
+            }
+            if(e.keyCode==13)
+            {
+                if (input_text != "")
+                {
+                    chat_packet.msg = input_text;
+                    socket.send(JSON.stringify(chat_packet));
+                    $input_area.prop("value", "");
+                    document.getElementById('chat_input_text').focus();
+                }
+            }
+            else
+                return;
+            e.returnValue= false;
+
+        });
 
     socket.onmessage = function (event) {
         append_message_2_chat(event.data);
