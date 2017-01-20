@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Let's Discuss</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.quilljs.com/latest/quill.js"></script>
+        <script src="https://cdn.quilljs.com/latest/quill.min.js"></script>
+        <link href="https://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
+        <link href="https://cdn.quilljs.com/latest/quill.bubble.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/chat.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/memo.js")"></script>
+    </head>
+    <body>
+        <nav>
+            <a href="">首頁</a>
+            <a href="">所有討論</a>
+            <a href="">帳戶</a>
+        </nav>
+        <div class="container">
+            <div id="chat" class="column">
+                <h2 id="chat_title">Test Chat Room</h2>
+                <div id="chat-content">
+            </div>
+                <div id="chat-op">
+                    <textarea type="text" id="chat-input" rows="1" cols="20" placeholder="message" autofocus></textarea>
+                    <button type="button" id="chat-submit" class="btn">送出</button>
+                </div>
+            </div>
+
+            <div id="memo" class="column">
+                <h2 id="memo-title">重點標註</h2>
+                <div id="memo_container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div id="doc" class="column">
+                <button id="save_delta">Save delta</button>
+                <button id="load_delta">Load delta</button>
+                <button id="on_off_btn">開關</button>
+                <div id="editor"></div>
+            </div>
+        </div>
+
+        <div id="login-panel" class="modal modal-sm fade" role="dialog">
+            <div class="modal-dailog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">登入</h1>
+                    </div>
+                    <div class="modal-body">
+                        <button type="button" id="login-fb" class="btn">Login | Facebook</button>
+                        <button type="button" id="login-google" class="btn">Login | Google</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="@routes.Assets.versioned("javascripts/discuss.js")"></script>
+    </body>
+</html>
