@@ -19,7 +19,7 @@ var discuss = (function (firebase) {
     return {
         init: function () {
             firebase.initializeApp(config);
-            this.db = firebase.database().ref('test/');
+            this.db = firebase.database().ref('test/message');
             this.auth = firebase.auth();
             this.storage = firebase.storage();
             this.isAuth();
@@ -67,6 +67,10 @@ var discuss = (function (firebase) {
         },
         loadMessage: function (ref) {
             ref.limitToLast(20).once('value', function (snapshot) {
+                if (snapshot.val() === null) {
+                    window.isNewMessage = true;
+                    return;
+                }
                 let msgs = Object.values(snapshot.val());
                 msgs.forEach(msg => {
                     append_message(msg);
@@ -80,6 +84,7 @@ var discuss = (function (firebase) {
                 'content': $chat_msg.val(),
                 'time': new Date().getTime()
             });
+            $chat_msg.val("");
         },
         listenMessage: function (ref) {
             ref.limitToLast(1).on('child_added', function (snapshot) {
@@ -92,8 +97,17 @@ var discuss = (function (firebase) {
     }
 })(firebase);
 
+var firepad;
+
 $(document).ready(function() {
     discuss.init();
+    memo.init();
+    firepad = Firepad.fromCodeMirror(firebase.database().ref('test/doc'), codeMirror, { richTextShortcuts: true, richTextToolbar: true });
+    firepad.on('ready', function() {
+        if (firepad.isHistoryEmpty()) {
+            firepad.setHtml('<span style="font-size: 24px;">Rich-text editing with <span style="color: red">Firepad!</span></span><br/><br/>Collaborative-editing made easy.\n');
+        }
+    });
 });
 
 $('#login-google').click(function () {
@@ -102,18 +116,29 @@ $('#login-google').click(function () {
 $('#login-fb').click(function () {
     discuss.signIn('facebook');
 });
-$('#chat_submit').click(function () {
+$('#chat-submit').click(function () {
     discuss.sendMessage();
 });
-
+$('#chat-input').keydown(function (event) {
+    let msg = $(this).val();
+    if(!event.shiftKey && event.keyCode==13)
+    {
+        if (msg !== "")
+        {
+            discuss.sendMessage();
+        }
+    }
+});
 var $msg_box = $('#chat-content');
 var preSender = "";
 function append_message(msg) {
-    let hiddenClass = (msg.user === preSender)? " hidden": "";
+    let hiddenClass = (msg.user === preSender || msg.user == window.username)? " hidden": "";
     let senderClass = (msg.user === window.username)? "me": "other";
     let template = `
     <div class='msg_buble'>
-        <div class='usr_name${hiddenClass}'>${msg.user}</div>
+        <div class="user_name_row">
+            <div class='usr_name${hiddenClass}'>${msg.user}</div>
+        </div>
         <div class='${senderClass} msg_container' draggable='true' ondragstart='drag(event)'>
             <span class='my_msg msg'>${msg.content}</span>
         </div>

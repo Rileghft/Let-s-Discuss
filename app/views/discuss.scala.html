@@ -6,17 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdn.quilljs.com/latest/quill.js"></script>
-        <script src="https://cdn.quilljs.com/latest/quill.min.js"></script>
-        <link href="https://cdn.quilljs.com/latest/quill.snow.css" rel="stylesheet">
-        <link href="https://cdn.quilljs.com/latest/quill.bubble.css" rel="stylesheet">
-        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
         <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+        <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+
         <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
         <script src="@routes.Assets.versioned("javascripts/chat.js")"></script>
         <script src="@routes.Assets.versioned("javascripts/memo.js")"></script>
+
+        <link href="@routes.Assets.versioned("stylesheets/discuss.css")" rel="stylesheet" type="text/css">
     </head>
     <body>
         <nav>
@@ -42,9 +47,6 @@
                 <div id="memo_container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div id="doc" class="column">
-                <button id="save_delta">Save delta</button>
-                <button id="load_delta">Load delta</button>
-                <button id="on_off_btn">開關</button>
                 <div id="editor"></div>
             </div>
         </div>
