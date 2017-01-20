@@ -84,6 +84,8 @@ nav {
 
 .usr_name{
     color: lightgray;
+    width:auto;
+    display: inline-block;
 }
 
 #chat_title{
@@ -97,4 +99,12 @@ nav {
 
 .hidden{
     display: none;
+}
+
+.close_button{
+    display: none;
+}
+
+.user_name_row:hover  .close_button{
+    display: inline-block;
 }
