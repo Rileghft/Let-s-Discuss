@@ -1,6 +1,8 @@
 /**
  * Created by fnsne on 2017/1/2.
  */
+
+//var isLogin = false;
 var socket;
 var hostUrl = window.location.host;
 var chat_packet = {
@@ -8,12 +10,21 @@ var chat_packet = {
     'msg' : "I'm msg"
 };
 
-var username = prompt("請輸入名字", "預設使用者");
-var preUsername = "";
-if(username != null){
+//var username = '楊舜宇';
+//var preUsername = "";
+/*if(username != null){
     chat_packet.user = username;
-}
+}*/
 
+$(document).ready(function(){
+    /*socket = new WebSocket(`ws://${hostUrl}/ws`);
+    $('#chat_submit').click(function () {
+        var $input_area = $('#chat-input');
+        var input_text = $input_area.val();
+        chat_packet.msg = input_text;
+        socket.send(JSON.stringify(chat_packet));
+        $input_area.prop("value", "");
+    });
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -57,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     socket.onmessage = function (event) {
         append_message_2_chat(event.data);
-    }
+    }*/
 });
 
 function append_message_2_chat( response ) {
-    var $msg_box = $('#chat_body');
+    var $msg_box = $('#chat-content');
     let resp = JSON.parse(response);
     let append_element = "";
     if(resp.msg == "")
@@ -82,17 +93,4 @@ function append_message_2_chat( response ) {
     preUsername = resp.user;
     $msg_box.append(append_element);
 }
-/*
-        <div class='msg_buble'>
-            <div class='user_name_row'>
-                <div class='usr_name'>
-                </div>
-            </div
-            <div class='me msg_container'>
-                <span class='my_msg msg>
-                    訊息
-                </span>
-            </div>
-        </div>
 
- */

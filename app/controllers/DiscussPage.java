@@ -2,9 +2,7 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
-import akka.actor.*;
-import play.libs.F.*;
+import views.html.discuss;
 import play.mvc.WebSocket;
 import play.mvc.LegacyWebSocket;
 import actor.*;
@@ -15,7 +13,7 @@ import actor.*;
 public class DiscussPage extends Controller{
 
     public Result index() {
-        return ok(index.render());
+        return ok(discuss.render());
     }
 
     public LegacyWebSocket<String> socket(){

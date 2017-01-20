@@ -11,11 +11,11 @@ function allowDrop(event) {
 }
 
 function drag(event) {
-    let msg=  event.currentTarget.innerText;
-    let parent = event.currentTarget.parentNode;
-    let name = parent.childNodes[0].childNodes[0].innerText;
+    console.log(event);
+    let user = event.target.parentNode.children[0].textContent;
+    let msg =  event.target.children[0].textContent;
     let data = {
-        'user':name,
+        'user': user,
         'msg' : msg
     };
     event.dataTransfer.setData('text/plain', JSON.stringify(data));
