@@ -1,7 +1,8 @@
+@(room: String)
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Let's Discuss</title>
+        <title>@room</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,14 +27,12 @@
     <body>
         <nav>
             <ul>
-                <li><a href="">首頁</a></li>
-                <li><a href="">所有討論</a></li>
-                <li><a href="">帳戶</a></li>
+                <li><a href="/">所有討論</a></li>
             </ul>
         </nav>
         <div class="container">
             <div id="chat" class="column">
-                <h2 id="chat_title">Test Chat Room</h2>
+                <h2 id="chat_title">@room</h2>
                 <div id="chat-content">
             </div>
                 <div id="chat-op">
@@ -64,6 +63,9 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            var roomName = '@room';
+        </script>
         <script src="@routes.Assets.versioned("javascripts/discuss.js")"></script>
     </body>
 </html>

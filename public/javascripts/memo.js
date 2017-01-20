@@ -9,7 +9,7 @@ var isNewMemo = false;
 var memo = (function (firebase) {
     return {
         init: function () {
-            this.db = firebase.database().ref('test/memo');
+            this.db = firebase.database().ref(`${roomName}/memo`);
             this.listenMemo(this.db);
             this.loadMemo(this.db);
         },

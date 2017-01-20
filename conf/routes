@@ -3,7 +3,8 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.DiscussPage.index
+GET     /                           controllers.DiscussPage.index()
+GET     /discuss/:room              controllers.DiscussPage.discuss(room: String)
 GET     /ws                         controllers.DiscussPage.socket
 
 # Map static resources from the /public folder to the /assets URL path

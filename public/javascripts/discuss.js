@@ -19,7 +19,7 @@ var discuss = (function (firebase) {
     return {
         init: function () {
             firebase.initializeApp(config);
-            this.db = firebase.database().ref('test/message');
+            this.db = firebase.database().ref(`${roomName}/message`);
             this.auth = firebase.auth();
             this.storage = firebase.storage();
             this.isAuth();
@@ -102,7 +102,7 @@ var firepad;
 $(document).ready(function() {
     discuss.init();
     memo.init();
-    firepad = Firepad.fromCodeMirror(firebase.database().ref('test/doc'), codeMirror, { richTextShortcuts: true, richTextToolbar: true });
+    firepad = Firepad.fromCodeMirror(firebase.database().ref(`${roomName}/doc`), codeMirror, { richTextShortcuts: true, richTextToolbar: true });
     firepad.on('ready', function() {
         if (firepad.isHistoryEmpty()) {
             firepad.setHtml('<span style="font-size: 24px;">Rich-text editing with <span style="color: red">Firepad!</span></span><br/><br/>Collaborative-editing made easy.\n');
