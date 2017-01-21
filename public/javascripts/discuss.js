@@ -3,6 +3,7 @@
  */
 
 var $chat_msg = $('#chat-input');
+var content = document.getElementById('chat-content');
 var username = "";
 var authInfo = {};
 var credential = "";
@@ -75,6 +76,7 @@ var discuss = (function (firebase) {
                     append_message(msg);
                 });
                 window.isNewMessage = true;
+                content.scrollTop = content.scrollHeight;
             });
         },
         sendMessage: function () {
@@ -91,6 +93,7 @@ var discuss = (function (firebase) {
                     let msg = snapshot.val();
                     append_message(msg);
                 }
+                content.scrollTop = content.scrollHeight;
             });
         }
     }
@@ -117,7 +120,7 @@ $('#login-fb').click(function () {
 $('#chat-submit').click(function () {
     discuss.sendMessage();
 });
-$('#chat-input').keydown(function (event) {
+$('#chat-input').keyup(function (event) {
     let msg = $(this).val();
     if(!event.shiftKey && event.keyCode==13)
     {
