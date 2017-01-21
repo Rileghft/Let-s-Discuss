@@ -29,7 +29,6 @@ function append_discuss(name, launcher) {
     <div class="discuss-history" onclick="location.href+=${href_append}" >
         <div class="discuss-name">${name}</div>
         <div class="discuss-launcher">${launcher}</div>
-        </a>
     </div>`;
     $history_container.append(template);
 }
