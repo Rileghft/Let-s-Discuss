@@ -33,6 +33,7 @@ var discuss = (function (firebase) {
                     window.username = user.displayName;
                     listenMessage(ref);
                     loadMessage(ref);
+                    memo.init();
                 }
                 else {
                     $('#login-panel').modal();
@@ -56,8 +57,6 @@ var discuss = (function (firebase) {
                 window.authInfo = result;
                 window.credential = result.credential;
                 $('#login-panel').modal('hide');
-                listenMessage(ref);
-                loadMessage(ref);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -101,7 +100,6 @@ var firepad;
 
 $(document).ready(function() {
     discuss.init();
-    memo.init();
     firepad = Firepad.fromCodeMirror(firebase.database().ref(`${roomName}/doc`), codeMirror, { richTextShortcuts: true, richTextToolbar: true });
     firepad.on('ready', function() {
         if (firepad.isHistoryEmpty()) {
