@@ -24,10 +24,12 @@ $(document).ready(function () {
 });
 
 function append_discuss(name, launcher) {
+    let href_append = "`discuss/"+name+"`";
     let template = `
-    <div class="discuss-history">
+    <div class="discuss-history" onclick="location.href+=${href_append}" >
         <div class="discuss-name">${name}</div>
         <div class="discuss-launcher">${launcher}</div>
+        </a>
     </div>`;
     $history_container.append(template);
 }
