@@ -1,0 +1,85 @@
+html,body{
+    height: 100%;
+}
+nav {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 3%;
+    background-color: black;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+nav a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.container{
+    height: 100%;
+}
+
+.new-discuss{
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.session-discuss{
+    height:auto;
+}
+
+.history{
+    height:50%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: rgba(0, 156, 156, 0.48);
+}
+
+.discuss-history-container{
+    width:80%;
+}
+
+.discuss-name{
+    display: inline-block;
+    width:40%;
+}
+
+.discuss-launcher{
+    display: inline-block;
+    width:40%;
+}
+
+.discuss-history{
+    background-color: rgba(131, 245, 203, 0.68);
+}
+
+.discuss-history-header{
+    background-color: rgba(0, 0, 167, 0.29);
+}
+
+.discuss-name-header{
+    display: inline-block;
+    width: 40%;
+}
+
+.discuss-launcher-header{
+    display: inline-block;
+    width: 40%;
+}
