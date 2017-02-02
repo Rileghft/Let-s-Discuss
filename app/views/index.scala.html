@@ -16,11 +16,33 @@
 
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="/">首頁</a></li>
-                <li><a href="/">關於</a></li>
-            </ul>
+        <nav class="nav navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <img src="@routes.Assets.versioned("images/brand.png")">
+                    <a class="navbar-brand">Let's Discuss</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首頁</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="#">關於</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                        <span id="user-name" class="nav-text"></span>
+                    </li>
+                    <li>
+                        <button id="logout" type="button" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            <span class="nav-text">登出</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <div class="container">
             <div class="new-discuss">
@@ -30,7 +52,7 @@
                 </div>
             </div>
             <div class="history">
-                <span>History</span>
+                <h1>History</h1>
                 <div class="discuss-history-container">
                     <div class="discuss-history-header">
                         <div class="discuss-name-header">

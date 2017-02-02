@@ -32,6 +32,7 @@ var discuss = (function (firebase) {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     window.username = user.displayName;
+                    $('#user-name').text(window.username);
                     listenMessage(ref);
                     loadMessage(ref);
                     memo.init();
@@ -64,6 +65,7 @@ var discuss = (function (firebase) {
         },
         signOut: function () {
             this.auth.signOut();
+            location.href = "/";
         },
         loadMessage: function (ref) {
             ref.limitToLast(20).once('value', function (snapshot) {
@@ -109,6 +111,10 @@ $(document).ready(function() {
             firepad.setHtml('<span style="font-size: 24px;">Rich-text editing with <span style="color: red">Firepad!</span></span><br/><br/>Collaborative-editing made easy.\n');
         }
     });
+});
+
+$('#logout').click(function () {
+    discuss.signOut();
 });
 
 $('#login-google').click(function () {
