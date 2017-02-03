@@ -4,32 +4,20 @@ html, body {
     margin: 0px;
 }
 
-nav {
-    max-height: 7%;
-}
-
 .navbar-header img{
     float: left;
+    z-index: 1;
 }
 
-.btn {
-    background-color: transparent;
-    height: 48px;
-    width: 48px;
-    border: 0;
+.navbar-nav {
+    z-index: 1;
 }
 
-.btn:hover {
-    background-color: transparent;
-}
-
-.nav-text {
-    color: whitesmoke;
-}
 
 #room {
     display: block;
     position: absolute;
+    z-index: 0;
     font-size: 2em;
     text-align: center;
     color: whitesmoke;
@@ -38,15 +26,11 @@ nav {
     padding-top: 5px;
 }
 
-.glyphicon {
-    color: whitesmoke;
-}
-
 .container {
     position: relative;
     margin: 0;
     padding: 0;
-    height: 94.5%;
+    height: 96%;
     width: 100%;
 }
 
@@ -105,10 +89,6 @@ nav {
     word-break:break-all;
 }
 
-#chat-submit {
-
-}
-
 .other{
     float:left;
     background-color: lightgray;
@@ -148,7 +128,6 @@ nav {
 }
 
 #memo_container{
-    height:90%;
     overflow-y: scroll;
 }
 
@@ -162,4 +141,10 @@ nav {
 
 .user_name_row:hover  .close_button{
     display: inline-block;
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        height: 91%;
+    }
 }

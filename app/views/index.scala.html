@@ -8,9 +8,12 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="@routes.Assets.versioned("javascripts/index.js")"></script>
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="@routes.Assets.versioned("stylesheets/bootstrap-social.css")" rel="stylesheet" type="text/css">
+
         <link href="@routes.Assets.versioned("stylesheets/index.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("stylesheets/navbar.css")" rel="stylesheet" type="text/css">
+        <link href="@routes.Assets.versioned("stylesheets/login-panel.css")" rel="stylesheet" type="text/css">
 
         <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
 
@@ -29,30 +32,48 @@
                     <li><a href="#">關於</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        </button>
+                    <!--
+                    <li id="login">
+                        <span class="glyphicon glyphicon-log-in login"></span>
+                        <span class="nav-text login">登入</span>
+                    </li>
+                    <li id="user" style="display: none;">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span id="user-name" class="nav-text"></span>
                     </li>
-                    <li>
-                        <button id="logout" type="button" class="btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                            <span class="nav-text">登出</span>
-                        </button>
+                    <li id="logout" style="display: none;">
+                        <span class="glyphicon glyphicon-log-out logout" aria-hidden="true"></span>
+                        <span class="nav-text logout">登出</span>
                     </li>
+                    -->
                 </ul>
             </div>
         </nav>
-        <div class="container">
-            <div class="new-discuss">
+        <div class="homepage-hero-module jumbotron jumbotron-center">
+            <div class="video-container">
+                <div class="title-container">
+                    <h1>Let's Discuss</h1>
+                    <p>聊天、重點擷取、文件</p>
+                    <p>讓你討論事情不需要在軟體間不停切換</p>
+                </div>
                 <div class="session-discuss">
-                    <input type="text" id="discuss-name" placeholder="討論名稱" autofocus>
-                    <button type="button" id="discuss-create-btn" class="btn" onclick="location.href+=`discuss/${$('#discuss-name').val()}`">開始討論</button>
+                    <input type="text" id="discuss-name" placeholder="輸入新討論名稱" autofocus>
+                    <button type="button" id="start-discuss" class="btn btn-success btn-lg" onclick="location.href+=`discuss/${$('#discuss-name').val()}`">立即開始</button>
+                </div>
+                <div class="filter"></div>
+                <video autoplay loop class="fillWidth">
+                    <source src="@routes.Assets.versioned("videos/Meeting-Room.mp4")" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                    <source src="@routes.Assets.versioned("videos/Meeting-Room.webm")" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                </video>
+                <div class="poster hidden">
+                    <img src="@routes.Assets.versioned("images/Meeting-Room.jpg")" alt="">
                 </div>
             </div>
+        </div>
+            <!--
+        <div class="container">
             <div class="history">
-                <h1>History</h1>
+                <h1>歷史討論</h1>
                 <div class="discuss-history-container">
                     <div class="discuss-history-header">
                         <div class="discuss-name-header">
@@ -65,5 +86,28 @@
                 </div>
             </div>
         </div>
+            -->
+
+        <div id="login-panel" class="modal fade in" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h1 class="modal-title">登入</h1>
+                    </div>
+                    <div class="modal-body">
+                        <a href="#" id="login-google" class="btn btn-lg btn-block btn-social btn-google">
+                            Google 登入
+                        </a>
+                        <a href="#" id="login-fb" class="btn btn-lg btn-block btn-social btn-facebook">
+                            Facebook 登入
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="@routes.Assets.versioned("javascripts/index.js")"></script>
     </body>
 </html>

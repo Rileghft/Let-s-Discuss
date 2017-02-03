@@ -36,6 +36,7 @@ var discuss = (function (firebase) {
                     listenMessage(ref);
                     loadMessage(ref);
                     memo.init();
+                    firepadInit();
                 }
                 else {
                     $('#login-panel').modal();
@@ -105,15 +106,21 @@ var firepad;
 
 $(document).ready(function() {
     discuss.init();
+    if (username !== "") {
+        firepadInit();
+    }
+});
+
+function firepadInit() {
     firepad = Firepad.fromCodeMirror(firebase.database().ref(`${roomName}/doc`), codeMirror, { richTextShortcuts: true, richTextToolbar: true });
     firepad.on('ready', function() {
         if (firepad.isHistoryEmpty()) {
             firepad.setHtml('<span style="font-size: 24px;">Rich-text editing with <span style="color: red">Firepad!</span></span><br/><br/>Collaborative-editing made easy.\n');
         }
     });
-});
+}
 
-$('#logout').click(function () {
+$('.logout').click(function () {
     discuss.signOut();
 });
 
