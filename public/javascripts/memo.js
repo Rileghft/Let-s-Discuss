@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 var isNewMemo = false;
+var lastKey = "";
+var last2Key = "";
 var memo = (function (firebase) {
     return {
         init: function () {
@@ -21,16 +23,25 @@ var memo = (function (firebase) {
                 }
                 snapshot.forEach(memo => {
                     document.getElementById('memo_container').appendChild(create_memo(memo.key, memo.val()));
+                    window.lastKey = memo.key;
                 });
                 window.isNewMemo = true;
             });
         },
         listenMemo: function (ref) {
             ref.limitToLast(1).on('child_added', function (snapshot) {
-                if (window.isNewMemo) {
+                if (window.isNewMemo && window.last2Key !== snapshot.key) {
                     let memo = snapshot.val();
+                    console.log(snapshot.key);
                     document.getElementById('memo_container').appendChild(create_memo(snapshot.key, memo));
+                    window.last2Key = window.lastKey;
+                    window.lastKey = memo.key;
                 }
+            });
+            ref.limitToLast(1).on('child_removed', function (snapshot) {
+                let key = snapshot.key();
+                console.log(snapshot.key);
+                $(`.msg_buble[data-key='${key}']`).remove();
             });
         },
         sendMemo: function (msg, time) {
